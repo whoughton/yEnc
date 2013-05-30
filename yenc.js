@@ -66,7 +66,7 @@
 			return output;
 		};
 
-		// ##### formBytes()
+		// ##### fromBytes()
 		// >`@param source [array]` our source array of integers  
 		//
 		// fromBytes turns an array of bytes (as integers) into a UTF8 string
@@ -77,8 +77,8 @@
 			;
 
 			for (; i < source.length; i++) {
-				if (source[i] <= 127) {										// 127
-					if (source[i] === 37) {									// 37
+				if (source[i] <= 127) {
+					if (source[i] === 37) {
 						output += "%25";
 					} else {
 						output += String.fromCharCode(source[i]);
@@ -174,4 +174,4 @@
 		this.yEnc = yEnc;
 	}
 
-})(g, yEnc);
+})();
