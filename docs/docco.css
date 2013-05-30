@@ -1,39 +1,6 @@
-/*--------------------- Typography ----------------------------*/
-
-@font-face {
-    font-family: 'aller-light';
-    src: url('public/fonts/aller-light.eot');
-    src: url('public/fonts/aller-light.eot?#iefix') format('embedded-opentype'),
-         url('public/fonts/aller-light.woff') format('woff'),
-         url('public/fonts/aller-light.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'aller-bold';
-    src: url('public/fonts/aller-bold.eot');
-    src: url('public/fonts/aller-bold.eot?#iefix') format('embedded-opentype'),
-         url('public/fonts/aller-bold.woff') format('woff'),
-         url('public/fonts/aller-bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'novecento-bold';
-    src: url('public/fonts/novecento-bold.eot');
-    src: url('public/fonts/novecento-bold.eot?#iefix') format('embedded-opentype'),
-         url('public/fonts/novecento-bold.woff') format('woff'),
-         url('public/fonts/novecento-bold.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-
 /*--------------------- Layout ----------------------------*/
 html { height: 100%; }
 body {
-  font-family: "aller-light";
   font-size: 14px;
   line-height: 18px;
   color: #30404f;
@@ -47,8 +14,6 @@ a {
 }
 
 b, strong {
-  font-weight: normal;
-  font-family: "aller-bold";
 }
 
 p, ul, ol {
@@ -59,7 +24,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #112233;
   line-height: 1em;
   font-weight: normal;
-  font-family: "novecento-bold";
   text-transform: uppercase;
   margin: 30px 0 15px 0;
 }
@@ -497,4 +461,79 @@ pre .chunk {
 
 pre .tex .formula {
   opacity: 0.5;
+}
+
+
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	background-color: #d1d6be;
+}
+
+ul.sections > li > div.content {
+	background-color: #d1d6be;
+	padding: 8px 0 16px 0;
+	overflow-x: visible;
+}
+
+#background {
+	background: #4e4b44;
+	border-right: 1px solid #ff4f4f;
+}
+
+#title .annotation {
+	padding: 0;
+	background: #ff4f4f;
+}
+
+#title h1 {
+	padding: 96px 48px 48px 48px;
+	color: white;
+	margin: 0;
+	text-align: center;
+	font-family: 'Cabin Sketch', cursive;
+	font-size: 64px;
+	text-shadow: 0 -2px 0 #4e4b44;
+	text-transform: none;
+}
+
+.annotation {
+	color: #d1d6be;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #8EAF9C;
+	text-transform: none;
+	text-shadow: 0 -1px 0 hsla(0, 0%, 0%, 1);
+	margin: .25em 0;
+}
+
+h5 {
+	font-size: 1em;
+}
+
+strong {
+	font-weight: 500;
+}
+
+.sections blockquote {
+	background: #d1d6be;
+	padding: 0.5em;
+	border-left: none;
+	border-radius: 4px;
+}
+
+.sections blockquote p {
+	margin: 0;
+	color: black;
+	line-height: 24px;
+}
+
+.sections blockquote code {
+	background: hsla(0, 0%, 100%, 0.5);
+	color: black;
+	border: 1px solid hsl(0, 0%, 75%);
+	border-radius: 2px;
+	padding: .25em;
 }

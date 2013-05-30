@@ -6165,3 +6165,49 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	font-size: 18px;
+	background: #4e4b44;
+	color: #d1d6be;
+	padding: 0;
+}
+
+h1 {
+	padding: 96px 48px 64px 48px;
+	background: #ff4f4f;
+	color: white;
+	margin: 0;
+	text-align: center;
+	font-family: 'Cabin Sketch', cursive;
+	font-size: 112px;
+	text-shadow: 0 -2px 0 #4e4b44;
+}
+
+a {
+	color: #8eaf9c;
+	text-decoration: none;
+	border-bottom: 1px dotted #ff4f4f;
+}
+a:hover, a:visited {
+	color: #ff4f4f;
+	text-decoration: none;
+}
+
+article {
+	padding: 24px 0 96px 0;
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+h3, h4 {
+	margin-top: 48px;
+}
