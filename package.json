@@ -1,0 +1,25 @@
+{
+	"name": "stake",
+	"version": "0.1.0",
+	"description": "A logging library built to provide multiple log levels, color and filesystem support.",
+	"main": "index.js",
+	"scripts": {
+		"test": ""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:whoughton/stake.git"
+	},
+	"keywords": [
+		"Logging",
+		"Debugging"
+	],
+	"author": "Weston Houghton <whoughton@gmail.com>",
+	"license": "BSD",
+	"bugs": {
+		"url": "https://github.com/whoughton/stake/issues"
+	},
+	"dependencies": {
+		"colors": ">= 0.6.0-1"
+	}
+}
