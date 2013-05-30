@@ -467,7 +467,7 @@ pre .tex .formula {
 
 body {
 	font-family: 'Lato', sans-serif;
-	font-weight: 100;
+	font-weight: 300;
 	background-color: #d1d6be;
 }
 
@@ -498,8 +498,13 @@ ul.sections > li > div.content {
 	text-transform: none;
 }
 
+#title h1 a, #title h1 a:hover, #title h1 a:visited {
+	color: white;
+	text-decoration: none;
+}
+
 .annotation {
-	color: #d1d6be;
+	color: white;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -509,8 +514,14 @@ h1, h2, h3, h4, h5, h6 {
 	margin: .25em 0;
 }
 
+h4 {
+	color: #ff4f4f;
+}
 h5 {
 	font-size: 1em;
+	border-bottom: 1px dotted #8EAF9C;
+	padding-bottom: 0.25em;
+	margin-bottom: 1em;
 }
 
 strong {
@@ -520,8 +531,9 @@ strong {
 .sections blockquote {
 	background: #d1d6be;
 	padding: 0.5em;
-	border-left: none;
+	border-left-color: #ff4f4f;
 	border-radius: 4px;
+	margin: .5em;
 }
 
 .sections blockquote p {
