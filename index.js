@@ -8,7 +8,7 @@
 	// # yEnc
 	// ** A minimal yEnc [en|de]coder **
 	var yEnc = function(){
-		//#### private variables
+		// ##### Private Variables
 		var
 			self = {}
 		,	reserved = [0, 10, 13, 61]
@@ -18,12 +18,12 @@
 
 		// ##### Private Methods
 		
-		// ##### each()
+		// #### each()
 		// >`@param obj [collection]` our source collection  
 		// >`@param iterator [function]` the function that will be called for each element in the collection  
 		// >`@param context [object]` the context our iterator should operate within  
 		//
-		// toBytes takes a UTF8 string and returns an array of bytes (as integers)
+		// essentially copied from underscore.js
 		var each = function(obj, iterator, context) {
 			var breaker = {};
 			if (obj === null) { return; }
@@ -42,7 +42,7 @@
 			}
 		};
 
-		// ##### toBytes()
+		// #### toBytes()
 		// >`@param source [array]` our source UTF-8 string  
 		//
 		// toBytes takes a UTF8 string and returns an array of bytes (as integers)
@@ -66,7 +66,7 @@
 			return output;
 		};
 
-		// ##### fromBytes()
+		// #### fromBytes()
 		// >`@param source [array]` our source array of integers  
 		//
 		// fromBytes turns an array of bytes (as integers) into a UTF8 string
@@ -93,7 +93,7 @@
 
 		// ##### Public Methods
 
-		// ##### yEnc.encode()
+		// #### yEnc.encode()
 		// >`@param source [string]` the source string we will be encoding  
 		//
 		// This is our encoding method for taking a text string and encoding it into the yEnc
@@ -119,7 +119,7 @@
 			return output;
 		};
 
-		// ##### yEnc.decode()
+		// #### yEnc.decode()
 		// >`@param source [string]` the source string we will be decoding  
 		//
 		// This is our encoding method for taking a UTF-8 text string and decoding it into
@@ -173,5 +173,4 @@
 		// browser global
 		this.yEnc = yEnc;
 	}
-
 })();

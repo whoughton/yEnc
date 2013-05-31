@@ -6166,7 +6166,7 @@ a.badge:focus {
   position: fixed;
 }
 
-*{
+* {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
@@ -6210,4 +6210,17 @@ article {
 
 h3, h4 {
 	margin-top: 48px;
+}
+
+p {
+	line-height: 1.5em;
+	margin-bottom: 1.33em;
+}
+
+p.minor {
+	font-size: .75em;
+}
+
+li {
+	margin: .5em 0;
 }

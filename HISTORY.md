@@ -1,6 +1,13 @@
 ## yEnc
 *https://github.com/whoughton/yEnc*
 
+### Version 0.9.1
+***
+**Release Date:** _2013-05-30_  
+
+* moved yenc.js to index.js to match the package.json file
+
+
 ### Version 0.9.0
 ***
 **Release Date:** _2013-05-30_  
