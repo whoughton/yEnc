@@ -12,7 +12,7 @@ yEnc is NOT an audio format (as MP3) or a video format (as AVI, MOV, …) or a p
 ### [View the annotated source](http://whoughton.github.io/yEnc/docs/)
 
 #### More yEnc information:
-* [GitHub Repository](https://github.com/whoughton/yEnc)
+* [Docs & Info](http://whoughton.github.io/yEnc/)
 * [yEnc site](http://www.yenc.org/)
 
 
