@@ -1,6 +1,13 @@
 ## yEnc
 *https://github.com/whoughton/yEnc*
 
+### Version 0.9.2
+***
+**Release Date:** _2013-_  
+
+* Added homepage parameter to package.json
+
+
 ### Version 0.9.1
 ***
 **Release Date:** _2013-05-30_  

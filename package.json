@@ -6,6 +6,7 @@
 	"scripts": {
 		"test": ""
 	},
+	"homepage": "http://whoughton.github.io/yEnc/"
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:whoughton/yEnc.git"
