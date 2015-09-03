@@ -1,7 +1,7 @@
 //*jshint parameters*
 /*jshint curly:true, eqeqeq:true, strict:true, boss:true, laxcomma:true */
 
-(function(attach){
+(function(){
 	'use strict';
 
 	// - - -
@@ -159,18 +159,11 @@
 		return self;
 	}();
 
-	// *exports for various module managers*
-	if (typeof define !== 'undefined' && define.amd) {
-		// require.js/amd
+	if (typeof define !== 'undefined' && define.amd) {				// requirejs/amd
 		define([], function() { return yEnc; });
-	} else if (typeof module !== 'undefined' && module.exports) {
-		// node.js
+	} else if (typeof module !== 'undefined' && module.exports) {	// node
 		module.exports = yEnc;
-	} else if (attach !== undefined) {
-		// user provided attachment
-		attach.yEnc = yEnc;
-	} else {
-		// browser global
-		this.yEnc = yEnc;
+	} else if (window !== undefined) {
+		window.yEnc = yEnc;
 	}
 })();

@@ -1,12 +1,12 @@
 {
 	"name": "yenc",
-	"version": "0.9.1",
+	"version": "1.0.0",
 	"description": "A javascript implementation of yEnc, usable for node, requirejs/AMD, and browsers...",
 	"main": "index.js",
 	"scripts": {
 		"test": ""
 	},
-	"homepage": "http://whoughton.github.io/yEnc/"
+	"homepage": "http://whoughton.github.io/yEnc/",
 	"repository": {
 		"type": "git",
 		"url": "git@github.com:whoughton/yEnc.git"
