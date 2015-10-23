@@ -17,11 +17,11 @@
 		// ##### Public Variables
 
 		// ##### Private Methods
-		
+
 		// #### each()
-		// >`@param obj [collection]` our source collection  
-		// >`@param iterator [function]` the function that will be called for each element in the collection  
-		// >`@param context [object]` the context our iterator should operate within  
+		// >`@param obj [collection]` our source collection
+		// >`@param iterator [function]` the function that will be called for each element in the collection
+		// >`@param context [object]` the context our iterator should operate within
 		//
 		// essentially copied from underscore.js
 		var each = function(obj, iterator, context) {
@@ -43,7 +43,7 @@
 		};
 
 		// #### toBytes()
-		// >`@param source [array]` our source UTF-8 string  
+		// >`@param source [array]` our source UTF-8 string
 		//
 		// toBytes takes a UTF8 string and returns an array of bytes (as integers)
 		var toBytes = function(source) {
@@ -67,7 +67,7 @@
 		};
 
 		// #### fromBytes()
-		// >`@param source [array]` our source array of integers  
+		// >`@param source [array]` our source array of integers
 		//
 		// fromBytes turns an array of bytes (as integers) into a UTF8 string
 		var fromBytes = function(source) {
@@ -94,18 +94,25 @@
 		// ##### Public Methods
 
 		// #### yEnc.encode()
-		// >`@param source [string]` the source string we will be encoding  
+		// >`@param source [string]` the source string we will be encoding
 		//
 		// This is our encoding method for taking a text string and encoding it into the yEnc
 		// format, the output string is a UTF-8 string
 		self.encode = function(source) {
+			return self.encodeBytes(toBytes(source));
+		}
+
+		// #### yEnc.encodeBytes()
+		// >`@param bytes [Array]` the source bytes we will be encoding
+		//
+		// This is our encoding method for taking a text string and encoding it into the yEnc
+		// format, the output string is a UTF-8 string
+		self.encodeBytes = function(bytes) {
 			var
 				output = ''
-			,	bytes = []
 			,	converted
 			;
 
-			bytes = toBytes(source);
 			each(bytes, function(ele, i){
 				converted = (ele + 42) % 256;
 				if (reserved.indexOf(converted) < 0) {
@@ -120,11 +127,20 @@
 		};
 
 		// #### yEnc.decode()
-		// >`@param source [string]` the source string we will be decoding  
+		// >`@param source [string]` the source string we will be decoding
 		//
 		// This is our encoding method for taking a UTF-8 text string and decoding it into
 		// the original text string
 		self.decode = function(source) {
+			return fromBytes(self.decodeBytes(source));
+		}
+
+		// #### yEnc.decodeBytes()
+		// >`@param source [string]` the source string we will be decoding
+		//
+		// This is our encoding method for taking a UTF-8 text string and decoding it into
+		// the original bytes array
+		self.decodeBytes = function(source) {
 			var
 				output = []
 			,	ck = false
@@ -153,7 +169,7 @@
 				}
 			}
 
-			return fromBytes(output);
+			return output;
 		};
 
 		return self;
