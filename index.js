@@ -79,12 +79,12 @@
 			for (; i < source.length; i++) {
 				if (source[i] <= 127) {
 					if (source[i] === 37) {
-						output += "%25";
+						output += '%25';
 					} else {
 						output += String.fromCharCode(source[i]);
 					}
 				} else {
-					output += "%"+ source[i].toString(16).toUpperCase();
+					output += '%'+ source[i].toString(16).toUpperCase();
 				}
 			}
 			return decodeURIComponent(output);
@@ -100,7 +100,7 @@
 		// format, the output string is a UTF-8 string
 		self.encode = function(source) {
 			return self.encodeBytes(toBytes(source));
-		}
+		};
 
 		// #### yEnc.encodeBytes()
 		// >`@param bytes [Array]` the source bytes we will be encoding
@@ -113,13 +113,13 @@
 			,	converted
 			;
 
-			each(bytes, function(ele, i){
+			each(bytes, function(ele){
 				converted = (ele + 42) % 256;
 				if (reserved.indexOf(converted) < 0) {
 					output += String.fromCharCode(converted);
 				} else {
 					converted = (converted + 64) % 256;
-					output += "="+ String.fromCharCode(converted);
+					output += '='+ String.fromCharCode(converted);
 				}
 			});
 
@@ -133,7 +133,7 @@
 		// the original text string
 		self.decode = function(source) {
 			return fromBytes(self.decodeBytes(source));
-		}
+		};
 
 		// #### yEnc.decodeBytes()
 		// >`@param source [string]` the source string we will be decoding
@@ -144,7 +144,6 @@
 			var
 				output = []
 			,	ck = false
-			,	bytes = []
 			,	i = 0
 			,	c
 			;
