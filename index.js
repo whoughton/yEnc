@@ -161,7 +161,7 @@
 					ck = false;
 					c = c - 64;
 				}
-				if (c < 42 && c > 0) {
+				if (c < 42 && c >= 0) {
 					output.push(c + 214);
 				} else {
 					output.push(c - 42);
