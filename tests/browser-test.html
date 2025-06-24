@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>yEnc Browser Test</title>
+  <style>
+    body { font-family: sans-serif; margin: 2em; }
+    pre { background: #f5f5f5; padding: 1em; }
+    .pass { color: green; }
+    .fail { color: red; }
+  </style>
+</head>
+<body>
+  <h1>yEnc Browser Test</h1>
+  <div id="results"></div>
+  <script src="dist/yenc.umd.js"></script>
+  <script>
+    function log(msg, pass) {
+      const div = document.getElementById('results');
+      const p = document.createElement('pre');
+      p.textContent = msg;
+      p.className = pass ? 'pass' : 'fail';
+      div.appendChild(p);
+    }
+    try {
+      if (!window.yEnc) throw new Error('window.yEnc not found!');
+      const yEnc = window.yEnc;
+      // Test cases
+      const tests = [
+        {
+          name: 'ASCII round-trip',
+          input: 'Hello, World! 123 @#$%^&*()',
+        },
+        {
+          name: 'Unicode round-trip',
+          input: 'Hello 世界 🌍 emoji 🚀',
+        },
+        {
+          name: 'Special chars',
+          input: String.fromCharCode(0) + String.fromCharCode(10) + String.fromCharCode(13) + '=',
+        },
+        {
+          name: 'Large string',
+          input: 'A'.repeat(10000) + '世界'.repeat(1000),
+        },
+      ];
+      tests.forEach(({ name, input }) => {
+        try {
+          const encoded = yEnc.encode(input);
+          const decoded = yEnc.decode(encoded);
+          if (decoded === input) {
+            log(`${name}: PASS`, true);
+          } else {
+            log(`${name}: FAIL (decoded !== input)`, false);
+          }
+        } catch (e) {
+          log(`${name}: FAIL (${e})`, false);
+        }
+      });
+    } catch (e) {
+      log('yEnc not loaded: ' + e, false);
+    }
+  </script>
+</body>
+</html> 

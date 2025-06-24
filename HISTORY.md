@@ -1,3 +1,13 @@
+## 2.0.0
+
+- Full migration to TypeScript with strict types
+- All byte operations now use Uint8Array for performance and clarity
+- Removed all legacy and unused internal code (e.g., underscore helpers)
+- Modernized codebase: ES modules, for...of, template literals, etc.
+- Improved browser and Node compatibility
+- Comprehensive tests and benchmarks
+- Documentation and API fully updated for TypeScript
+
 ## yEnc
 *https://github.com/whoughton/yEnc*
 

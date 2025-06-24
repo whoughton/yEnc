@@ -1,402 +1,81 @@
-<!DOCTYPE html>
+<!DOCTYPE html><html class="default" lang="en" data-base="./"><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>yenc - v2.0.0</title><meta name="description" content="Documentation for yenc"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => window.app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><a href="index.html" class="title">yenc - v2.0.0</a><div id="tsd-toolbar-links"></div><button id="tsd-search-trigger" class="tsd-widget" aria-label="Search"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></button><dialog id="tsd-search" aria-label="Search"><input role="combobox" id="tsd-search-input" aria-controls="tsd-search-results" aria-autocomplete="list" aria-expanded="true" autocapitalize="off" autocomplete="off" placeholder="Search the docs" maxLength="100"/><ul role="listbox" id="tsd-search-results"></ul><div id="tsd-search-status" aria-live="polite" aria-atomic="true"><div>Preparing search index...</div></div></dialog><a href="#" class="tsd-widget menu" id="tsd-toolbar-menu-trigger" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>yenc - v2.0.0</h1></div><div class="tsd-panel tsd-typography"><h2 id="yenc" class="tsd-anchor-link">yEnc<a href="#yenc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>A javascript implementation of yEnc, usable for node and browsers</p>
+<h3 id="what-is-yenc" class="tsd-anchor-link">What is yEnc<a href="#what-is-yenc" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>yEnc is an encoding method which offers efficient and proper transmission for binaries on the Usenet (or by eMail and other applications).</p>
+<p>Other encodings are BASE64, BinHex, UUencode, Quoted Printable, …</p>
+<p>yEnc is NOT an audio format (as MP3) or a video format (as AVI, MOV, …) or a picture format (as GIF or JPEG).</p>
+<h3 id="documentation--links" class="tsd-anchor-link">Documentation &amp; Links<a href="#documentation--links" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li><a href="http://whoughton.github.io/yEnc/">Overview</a></li>
+<li><a href="http://whoughton.github.io/yEnc/docs/">Detailed Documentation</a></li>
+<li><a href="https://en.wikipedia.org/wiki/YEnc">yEnc Wikipedia</a></li>
+<li><a href="http://www.yenc.org/">yEnc website- out of order</a></li>
+</ul>
+<h2 id="performance-benchmarks" class="tsd-anchor-link">Performance Benchmarks<a href="#performance-benchmarks" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This library includes a benchmark suite (<code>npm run bench</code>) using <a href="https://github.com/tinylibs/tinybench">tinybench</a> to measure encode/decode performance for ASCII, Unicode, and large strings.</p>
+<h3 id="methodology" class="tsd-anchor-link">Methodology<a href="#methodology" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Benchmarks are run using Node.js v22+ on a modern Mac.</li>
+<li>Each test measures the average operations per second (ops/sec) for encoding and decoding various string types and sizes.</li>
+<li>The benchmark script is located at <code>bench.ts</code> and can be run with <code>npm run bench</code>.</li>
+</ul>
+<h3 id="results" class="tsd-anchor-link">Results<a href="#results" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Before Optimization</th>
+<th>After Optimization</th>
+<th>Change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encode (ascii)</td>
+<td>939,753 ops/sec</td>
+<td>949,856 ops/sec</td>
+<td><strong>+1%</strong></td>
+</tr>
+<tr>
+<td>decode (ascii)</td>
+<td>3,131,047 ops/sec</td>
+<td>3,193,687 ops/sec</td>
+<td><strong>+2%</strong></td>
+</tr>
+<tr>
+<td>encode (unicode)</td>
+<td>881,131 ops/sec</td>
+<td>911,317 ops/sec</td>
+<td><strong>+3%</strong></td>
+</tr>
+<tr>
+<td>decode (unicode)</td>
+<td>2,583,784 ops/sec</td>
+<td>2,674,569 ops/sec</td>
+<td><strong>+4%</strong></td>
+</tr>
+<tr>
+<td>encode (large)</td>
+<td>2,276 ops/sec</td>
+<td>2,382 ops/sec</td>
+<td><strong>+5%</strong></td>
+</tr>
+<tr>
+<td>decode (large)</td>
+<td>6,857 ops/sec</td>
+<td>6,972 ops/sec</td>
+<td><strong>+2%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Key optimizations:</strong></p>
+<ul>
+<li>Switched from array join to string concatenation for encode (faster for both small and large strings in JS engines)</li>
+<li>Used a Set for reserved character lookup (faster than Array.indexOf)</li>
+<li>Removed unnecessary function call overhead in tight loops</li>
+</ul>
+<p><strong>How to run benchmarks:</strong></p>
+<pre><code class="sh"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">run</span><span class="hl-1"> </span><span class="hl-2">bench</span>
+</code><button type="button">Copy</button></pre>
 
-<html>
-<head>
-  <title>yEnc</title>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
-  <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,700,100italic,300italic,400italic,700italic|Cabin+Sketch:400,700' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" media="all" href="docco.css" />
-</head>
-<body>
-  <div id="container">
-    <div id="background"></div>
-    
-    <ul class="sections">
-        
-          <li id="title">
-              <div class="annotation">
-                  <h1><a href="/yEnc/">yEnc</a></h1>
-              </div>
-          </li>
-        
-        
-        
-        <li id="section-1">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-1">&#182;</a>
-              </div>
-              <p><em>jshint parameters</em></p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="comment">/*jshint curly:true, eqeqeq:true, strict:true, boss:true, laxcomma:true */</span>
-
-(<span class="keyword">function</span>(attach){
-	<span class="string">'use strict'</span>;</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-2">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
-              </div>
-<h1>yEnc</h1>
-<p><strong> A minimal yEnc [en|de]coder </strong></p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>	<span class="keyword">var</span> yEnc = <span class="keyword">function</span>(){</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-3">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h4">
-                <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              <h5>Private Variables</h5>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		<span class="keyword">var</span>
-			self = {}
-		,	reserved = [<span class="number">0</span>, <span class="number">10</span>, <span class="number">13</span>, <span class="number">61</span>]
-		;</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h5">
-                <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <h5>Public Variables</h5>
-<h5>Private Methods</h5>
-
-            </div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h5">
-                <a class="pilcrow" href="#section-5">&#182;</a>
-              </div>
-              <h4>each()</h4>
-<blockquote>
-<p><code>@param obj [collection]</code> our source collection<br><code>@param iterator [function]</code> the function that will be called for each element in the collection<br><code>@param context [object]</code> the context our iterator should operate within  </p>
-</blockquote>
-<p>essentially copied from underscore.js</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		<span class="keyword">var</span> each = <span class="keyword">function</span>(obj, iterator, context) {
-			<span class="keyword">var</span> breaker = {};
-			<span class="keyword">if</span> (obj === <span class="literal">null</span>) { <span class="keyword">return</span>; }
-			<span class="keyword">if</span> (Array.prototype.forEach &amp;&amp; obj.forEach === Array.prototype.forEach) {
-				obj.forEach(iterator, context);
-			} <span class="keyword">else</span> <span class="keyword">if</span> (obj.length === +obj.length) {
-				<span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, l = obj.length; i &lt; l; i++) {
-					<span class="keyword">if</span> (iterator.call(context, obj[i], i, obj) === breaker) { <span class="keyword">return</span>; }
-				}
-			} <span class="keyword">else</span> {
-				<span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> obj) {
-					<span class="keyword">if</span> (obj.hasOwnProperty(key)) {
-						<span class="keyword">if</span> (iterator.call(context, obj[key], key, obj) === breaker) { <span class="keyword">return</span>; }
-					}
-				}
-			}
-		};</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-6">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h5">
-                <a class="pilcrow" href="#section-6">&#182;</a>
-              </div>
-              <h4>toBytes()</h4>
-<blockquote>
-<p><code>@param source [array]</code> our source UTF-8 string  </p>
-</blockquote>
-<p>toBytes takes a UTF8 string and returns an array of bytes (as integers)</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		<span class="keyword">var</span> toBytes = <span class="keyword">function</span>(source) {
-			<span class="keyword">var</span>
-				output = []
-			,	i = <span class="number">0</span>
-			,	j = <span class="number">0</span>
-			,	subchar
-			;
-			<span class="keyword">for</span> (; i &lt; source.length; i++) {
-				<span class="keyword">if</span> (source.charCodeAt(i) &lt;= <span class="number">0x7F</span>) {
-					output.push(source.charCodeAt(i));
-				} <span class="keyword">else</span> {
-					subchar = encodeURIComponent(source.charAt(i)).substr(<span class="number">1</span>).split(<span class="string">'%'</span>);
-					<span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; subchar.length; j++) {
-						output.push(parseInt(subchar[j], <span class="number">16</span>));
-					}
-				}
-			}
-			<span class="keyword">return</span> output;
-		};</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-7">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h5">
-                <a class="pilcrow" href="#section-7">&#182;</a>
-              </div>
-              <h4>fromBytes()</h4>
-<blockquote>
-<p><code>@param source [array]</code> our source array of integers  </p>
-</blockquote>
-<p>fromBytes turns an array of bytes (as integers) into a UTF8 string</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		<span class="keyword">var</span> fromBytes = <span class="keyword">function</span>(source) {
-			<span class="keyword">var</span>
-				output = <span class="string">''</span>
-			,	i = <span class="number">0</span>
-			;
-
-			<span class="keyword">for</span> (; i &lt; source.length; i++) {
-				<span class="keyword">if</span> (source[i] &lt;= <span class="number">127</span>) {
-					<span class="keyword">if</span> (source[i] === <span class="number">37</span>) {
-						output += <span class="string">"%25"</span>;
-					} <span class="keyword">else</span> {
-						output += String.fromCharCode(source[i]);
-					}
-				} <span class="keyword">else</span> {
-					output += <span class="string">"%"</span>+ source[i].toString(<span class="number">16</span>).toUpperCase();
-				}
-			}
-			<span class="keyword">return</span> decodeURIComponent(output);
-		};</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-8">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h5">
-                <a class="pilcrow" href="#section-8">&#182;</a>
-              </div>
-              <h5>Public Methods</h5>
-<h5>yEnc.encode()</h5>
-<blockquote>
-<p><code>@param source [string]</code> the source string we will be encoding  </p>
-</blockquote>
-<p>This is our encoding method for taking a text string and encoding it into the yEnc
-format, the output string is a UTF-8 string</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		self.encode = <span class="keyword">function</span>(source) {
-			<span class="keyword">var</span>
-				output = <span class="string">''</span>
-			,	bytes = []
-			,	converted
-			;
-
-			bytes = toBytes(source);
-			each(bytes, <span class="keyword">function</span>(ele, i){
-				converted = (ele + <span class="number">42</span>) % <span class="number">256</span>;
-				<span class="keyword">if</span> (reserved.indexOf(converted) &lt; <span class="number">0</span>) {
-					output += String.fromCharCode(converted);
-				} <span class="keyword">else</span> {
-					converted = (converted + <span class="number">64</span>) % <span class="number">256</span>;
-					output += <span class="string">"="</span>+ String.fromCharCode(converted);
-				}
-			});
-
-			<span class="keyword">return</span> output;
-		};</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-9">
-            <div class="annotation">
-              
-              <div class="pilwrap for-h5">
-                <a class="pilcrow" href="#section-9">&#182;</a>
-              </div>
-              <h4>yEnc.decode()</h4>
-<blockquote>
-<p><code>@param source [string]</code> the source string we will be decoding  </p>
-</blockquote>
-<p>This is our encoding method for taking a UTF-8 text string and decoding it into
-the original text string</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		self.decode = <span class="keyword">function</span>(source) {
-			<span class="keyword">var</span>
-				output = []
-			,	ck = <span class="literal">false</span>
-			,	bytes = []
-			,	i = <span class="number">0</span>
-			,	c
-			;
-
-			<span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; source.length; i++) {
-				c = source.charCodeAt(i);</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-10">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-10">&#182;</a>
-              </div>
-              <p>ignore newlines</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>				<span class="keyword">if</span> (c === <span class="number">13</span> || c === <span class="number">10</span>) { <span class="keyword">continue</span>; }</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-11">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-11">&#182;</a>
-              </div>
-              <p>if we&#39;re an &quot;=&quot; and we haven&#39;t been flagged, set flag</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>				<span class="keyword">if</span> (c === <span class="number">61</span> &amp;&amp; !ck) {
-					ck = <span class="literal">true</span>;
-					<span class="keyword">continue</span>;
-				}
-				<span class="keyword">if</span> (ck) {
-					ck = <span class="literal">false</span>;
-					c = c - <span class="number">64</span>;
-				}
-				<span class="keyword">if</span> (c &lt; <span class="number">42</span> &amp;&amp; c &gt; <span class="number">0</span>) {
-					output.push(c + <span class="number">214</span>);
-				} <span class="keyword">else</span> {
-					output.push(c - <span class="number">42</span>);
-				}
-			}
-
-			<span class="keyword">return</span> fromBytes(output);
-		};
-
-		<span class="keyword">return</span> self;
-	}();</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-12">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-12">&#182;</a>
-              </div>
-              <p><em>exports for various module managers</em></p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>	<span class="keyword">if</span> (<span class="keyword">typeof</span> define !== <span class="string">'undefined'</span> &amp;&amp; define.amd) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-13">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-13">&#182;</a>
-              </div>
-              <p>require.js/amd</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		define([], <span class="keyword">function</span>() { <span class="keyword">return</span> yEnc; });
-	} <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">typeof</span> module !== <span class="string">'undefined'</span> &amp;&amp; module.exports) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-14">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-14">&#182;</a>
-              </div>
-              <p>node.js</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		module.exports = yEnc;
-	} <span class="keyword">else</span> <span class="keyword">if</span> (attach !== <span class="literal">undefined</span>) {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-15">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-15">&#182;</a>
-              </div>
-              <p>user provided attachment</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		attach.yEnc = yEnc;
-	} <span class="keyword">else</span> {</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-16">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-16">&#182;</a>
-              </div>
-              <p>browser global</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>		<span class="keyword">this</span>.yEnc = yEnc;
-	}
-
-})();</pre></div></div>
-            
-        </li>
-        
-    </ul>
-  </div>
-</body>
-</html>
+<p><strong>Interpretation:</strong></p>
+<ul>
+<li>The library is highly performant for both ASCII and Unicode data.</li>
+<li>Encoding and decoding large strings is efficient and scales well.</li>
+<li>All optimizations are validated by a comprehensive test suite (<code>npm test</code>).</li>
+</ul>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg><h3>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#yenc"><span>y<wbr/>Enc</span></a><ul><li><a href="#what-is-yenc"><span>What is y<wbr/>Enc</span></a></li><li><a href="#documentation--links"><span>Documentation &amp; <wbr/>Links</span></a></li></ul><a href="#performance-benchmarks"><span>Performance <wbr/>Benchmarks</span></a><ul><li><a href="#methodology"><span>Methodology</span></a></li><li><a href="#results"><span>Results</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">yenc - v2.0.0</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>

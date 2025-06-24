@@ -1,11 +1,17 @@
 {
   "name": "yenc",
-  "version": "1.0.0",
-  "description": "A javascript implementation of yEnc, usable for node, requirejs/AMD, and browsers...",
+  "version": "2.0.0",
+  "description": "A javascript implementation of yEnc, usable for node and browsers",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-	"test": "./node_modules/.bin/mocha tests/index.js",
-	"lint": "./node_modules/.bin/eslint index.js"
+    "test": "vitest run",
+    "test:watch": "vitest run --watch",
+    "build": "vite build",
+    "dev": "vite",
+    "lint": "eslint index.js",
+    "docs": "typedoc",
+    "bench": "vite build --config vite.bench.config.js && node dist/bench.cjs"
   },
   "homepage": "http://whoughton.github.io/yEnc/",
   "repository": {
@@ -21,13 +27,20 @@
   "bugs": {
     "url": "https://github.com/whoughton/yEnc/issues"
   },
-  "dependencies": {},
   "devDependencies": {
-    "chai": "^3.4.1",
-    "eslint": "^1.10.3",
-    "mocha": "^2.3.4"
+    "@types/node": "^24.0.3",
+    "eslint": "^8.0.0",
+    "tinybench": "^4.0.1",
+    "typedoc": "^0.28.5",
+    "typescript": "^5.8.3",
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0"
   },
   "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2022,
+      "sourceType": "module"
+    },
     "rules": {
       "indent": [
         1,
@@ -63,7 +76,7 @@
       ]
     },
     "env": {
-      "es6": true,
+      "es2022": true,
       "browser": true,
       "node": true
     },
