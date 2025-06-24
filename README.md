@@ -1,7 +1,7 @@
 ## yEnc
 ### Version 2.0 - Refactored for TypeScript and performance improvements
 
-![CI](https://github.com/whoughton/yEnc/actions/workflows/ci.yml/badge.svg?branch=master)
+![CI](https://github.com/whoughton/yEnc/actions/workflows/ci.yml/badge.svg?branch=main)
 
 A javascript implementation of yEnc, usable for node and browsers
 
